@@ -16,10 +16,10 @@ flatten_list = lambda main_list: [item for sublist in main_list for item in subl
 def load_data() -> Dict[str, pd.DataFrame]:
     data = {name:pd.read_csv(f'data/{name}.csv') for name in SPLIT_NAMES}
     return data
-DATA_DICT = load_data()
 
 # --- / Functions ----
 # --- PAGE  CONTENT ---
+DATA_DICT = load_data()
 
 
 st.title("PAC - Polish Abusive Clauses Dataset")
@@ -31,7 +31,7 @@ st.write(f"Total Samples: {sum([len(df) for _, df in DATA_DICT.items()])}")
 st.subheader("Class distribution per data split")
 st.bar_chart(pd.DataFrame([df.label.value_counts().rename(k) for k, df in DATA_DICT.items()]))
 
-st.subheader("Number of words per observation")
+st.subheader("Mean number of words per observation")
 st.area_chart(
     pd.DataFrame([(
                     df.text.apply(lambda x: len(x.split(' ')))
