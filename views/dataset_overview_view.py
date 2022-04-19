@@ -22,7 +22,7 @@ count_num_of_words = lambda text: len(re.sub(r'[^a-zA-Z ]', '', unidecode(text))
 
 @st.cache
 def load_data() -> Dict[str, pd.DataFrame]:
-    data = {name:pd.read_csv(f'data/{name}.csv') for name in SPLIT_NAMES}
+    data = {name:pd.read_csv(f'/data/{name}.csv') for name in SPLIT_NAMES}
     return data
 
 # --- / Functions ----
