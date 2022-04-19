@@ -12,4 +12,4 @@ COPY ./data /data
 COPY ./views /views
 
 ENTRYPOINT [ "streamlit", "run"]
-CMD ["/views/dataset_overview_view.py"]
+CMD ["/views/dataset_overview.py"]

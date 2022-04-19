@@ -14,7 +14,7 @@ docker run -p 8501:8501 pac-dashboard
 Using Python:
 ```bash
 pip install -r requirements.txt
-streamlit run views/dataset_overview_view.py
+streamlit run views/dataset_overview.py
 ```
 
 References
