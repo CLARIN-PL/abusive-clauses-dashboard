@@ -80,7 +80,6 @@ fig_num_chars.update_traces(nbinsx=100, autobinx=True, selector={'type':'histogr
 fig_num_chars.update_layout(title_text='Histogram - number of characters per observation', xaxis_title='Number of characters')
 st.plotly_chart(fig_num_chars, use_container_width=True)
 
-
 st.subheader("Top 20 common words per data split")
 for i, col in enumerate(st.columns(3)):
     with col:

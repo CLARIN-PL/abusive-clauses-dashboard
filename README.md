@@ -22,3 +22,5 @@ References
 
 License
 ------------
+MIT licensed
+Copyright (C) 2022: [CLARIN-PL](https://github.com/CLARIN-PL)
