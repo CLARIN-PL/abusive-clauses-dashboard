@@ -8,6 +8,10 @@ authors = ["Your Name <you@example.com>"]
 python = "^3.10"
 streamlit = "^1.11.0"
 gradio = "^3.0.26"
+transformers = "^4.20.1"
+datasets = "^2.3.2"
+black = "^22.6.0"
+pyperclip = "^1.8.2"
 
 [tool.poetry.dev-dependencies]
 
