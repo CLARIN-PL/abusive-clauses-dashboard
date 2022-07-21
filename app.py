@@ -82,10 +82,7 @@ with dataset_statistics:
     st.dataframe(metrics_df)
 
     latex_df = metrics_df.style.to_latex()
-    st.button(
-        label="Copy table to LaTeX",
-        on_click=lambda: pyperclip.copy(latex_df)
-    )
+    st.button(label="Copy table to LaTeX", on_click=lambda: pyperclip.copy(latex_df))
 
     # Class distribution in each subset
     st.header("Class distribution in each subset")
