@@ -3,6 +3,7 @@ import re
 import pandas as pd
 import plotly.figure_factory as ff
 import plotly.graph_objects as go
+import pyperclip
 import streamlit as st
 from unidecode import unidecode
 
@@ -62,11 +63,28 @@ with description:
 with dataset_statistics:
     st.header("Dataset statistics")
     st.subheader("Number of samples in each data split")
-    st.write(f"Train samples: {DATA_DICT['train'].shape[0]}")
-    st.write(f"Validation samples: {DATA_DICT['dev'].shape[0]}")
-    st.write(f"Test samples: {DATA_DICT['test'].shape[0]}")
-    st.write(
-        f"Total number of samples: {sum([DATA_DICT['train'].shape[0], DATA_DICT['dev'].shape[0], DATA_DICT['test'].shape[0]])}"
+    metrics_df = pd.DataFrame.from_dict(
+        {
+            "Train": DATA_DICT["train"].shape[0],
+            "Dev": DATA_DICT["dev"].shape[0],
+            "Test": DATA_DICT["test"].shape[0],
+            "Total": sum(
+                [
+                    DATA_DICT["train"].shape[0],
+                    DATA_DICT["dev"].shape[0],
+                    DATA_DICT["test"].shape[0],
+                ]
+            ),
+        },
+        orient="index",
+    ).reset_index()
+    metrics_df.columns = ["Subset", "Number of samples"]
+    st.dataframe(metrics_df)
+
+    latex_df = metrics_df.style.to_latex()
+    st.button(
+        label="Copy table to LaTeX",
+        on_click=lambda: pyperclip.copy(latex_df)
     )
 
     # Class distribution in each subset
